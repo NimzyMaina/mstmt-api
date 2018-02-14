@@ -21,7 +21,7 @@ class TransactionsTransformer extends TransformerAbstract
         return [
             'id' => $d->id,
             'mpesa_receipt_number' => isset($transaction->mpesa_receipt_number) ? $transaction->mpesa_receipt_number:"N/A",
-            'amount' => isset($transaction->amount) ? $transaction->amount : 0,
+            'amount' => isset($transaction->amount) ? number_format($transaction->amount,2) : 0,
             'description' => $d->description,
             'status' => isset($transaction->status) ? $transaction->status:"N/A",
             'created_at' =>(string)$d->created_at
