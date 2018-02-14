@@ -31,4 +31,6 @@ $api->group(['prefix' => 'v1'], function ($api) {
 
     $api->get('register','MpesaController@registerUrl');
 
+    $api->get('transactions','TransactionsController@index');
+
 });
