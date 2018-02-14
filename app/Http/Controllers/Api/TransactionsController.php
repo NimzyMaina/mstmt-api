@@ -15,7 +15,7 @@ class TransactionsController extends Controller
     {
         $user = $this->auth->user();
 
-        $transactions = $user->transactions()->with('description');
+        $transactions = $user->transactions()->with('description')->get();
 
         dd($transactions);
     }
