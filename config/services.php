@@ -42,7 +42,7 @@ return [
     ],
 
     'africa_t' => [
-        'username' => env('SMS_KEY'),
+        'username' => env('SMS_USER'),
         'app_key' => env('SMS_KEY')
     ],
 
