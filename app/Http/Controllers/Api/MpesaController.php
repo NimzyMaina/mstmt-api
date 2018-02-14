@@ -14,7 +14,7 @@ class MpesaController extends Controller
 
     public function __construct()
     {
-        $this->middleware('api.auth');
+        $this->middleware('api.auth',['only' => ['stk']]);
     }
 
     public function stk(Request $request,Mpesa $mpesa)
