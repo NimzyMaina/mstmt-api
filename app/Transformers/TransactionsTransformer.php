@@ -17,12 +17,13 @@ class TransactionsTransformer extends TransformerAbstract
 
     public function transform(Description $d)
     {
+        $transaction = $d->transaction;
         return [
             'id' => $d->id,
-            'mpesa_receipt_number' => isset($d->transaction()[0]->mpesa_receipt_number) ? $d->transaction()[0]->mpesa_receipt_number:"N/A",
-            'amount' => isset($d->transaction()[0]->amount) ? $d->transaction()[0]->amount : 0,
+            'mpesa_receipt_number' => isset($transaction->mpesa_receipt_number) ? $transaction->mpesa_receipt_number:"N/A",
+            'amount' => isset($transaction->amount) ? $transaction->amount : 0,
             'description' => $d->description,
-            'status' => isset($d->transaction()[0]->status) ? $d->transaction()[0]->status:"N/A",
+            'status' => isset($transaction->status) ? $transaction->status:"N/A",
             'created_at' =>(string)$d->created_at
         ];
     }
