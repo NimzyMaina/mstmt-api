@@ -24,7 +24,7 @@ class MpesaController extends Controller
         $PartyA = full_phone($request->phone);
         $PartyB = '174379';
         $PhoneNumber = $PartyA;
-        $CallBackURL = url('api/v1/callback');
+        $CallBackURL = url('v1/callback');
         $AccountReference = 'boo-boo';
         $TransactionDesc = $request->deescription;
         $Remarks = 'Just testing';
