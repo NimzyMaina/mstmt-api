@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class,'email','email');
     }
+
+    public function descriptions()
+    {
+        return $this->hasMany(Description::class,'email','email');
+    }
 }

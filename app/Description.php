@@ -10,6 +10,6 @@ class Description extends Model
 
     public function transaction()
     {
-        return $this->belongsTo(Transaction::class,'merchant_request_id','merchant_request_id');
+        return $this->hasOne(Transaction::class,'merchant_request_id','merchant_request_id');
     }
 }
