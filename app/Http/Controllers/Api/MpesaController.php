@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Description;
 use App\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -10,8 +11,16 @@ use Safaricom\Mpesa\Mpesa;
 
 class MpesaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('api.auth');
+    }
+
     public function stk(Request $request,Mpesa $mpesa)
     {
+        $user = $this->auth->user();
+
         $this->val($request->all(),[
             'phone' => 'required',
             'amount' => 'required',
@@ -35,7 +44,19 @@ class MpesaController extends Controller
             $PartyA, $PartyB, $PhoneNumber, $CallBackURL,
             $AccountReference, $TransactionDesc, $Remarks);
 
-        return($stkPushSimulation);
+        $response = json_decode($stkPushSimulation);
+
+        Description::create([
+            'email' => $user->email,
+            'description' => $request->description,
+            'merchant_request_id' => $response->MerchantRequestID,
+            'checkout_request_id' => $response->CheckoutRequestID
+        ]);
+
+        if($response->ResponseCode == 0){
+           return $this->respond('Check your phone for the Mpesa Push STK');
+        }
+        return $this->respond('The Request failed',400);
     }
 
     public function callBack(Request $request,Mpesa $mpesa)
@@ -51,6 +72,8 @@ class MpesaController extends Controller
         $stkCallback = $result->Body->stkCallback;
         $ResultCode = $stkCallback->ResultCode;
         $ResultDesc = $stkCallback->ResultDesc;
+        $MerchantRequestID = $stkCallback->MerchantRequestID;
+        $CheckoutRequestID = $stkCallback->CheckoutRequestID;
         if($ResultCode == 0){
             $Status = 'COMPLETE';
         }
@@ -63,6 +86,8 @@ class MpesaController extends Controller
         }
 
         $transaction = new Transaction([
+            'merchant_request_id' => $MerchantRequestID,
+            'checkout_request_id' => $CheckoutRequestID,
             'result_code' => $ResultCode,
             'result_desc' => $ResultDesc,
             'status' => $Status
