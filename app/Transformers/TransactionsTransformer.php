@@ -19,10 +19,10 @@ class TransactionsTransformer extends TransformerAbstract
     {
         return [
             'id' => $d->id,
-            'mpesa_receipt_number' => $d->transaction()->mpesa_receipt_number,
-            'amount' => $d->transaction()->amount,
+            'mpesa_receipt_number' => isset($d->transaction()->mpesa_receipt_number) ? $d->transaction()->mpesa_receipt_number:"N/A",
+            'amount' => isset($d->transaction()->amount) ? $d->transaction()->amount : 0,
             'description' => $d->description,
-            'status' => $d->transaction()->status,
+            'status' => isset($d->transaction()->status) ? $d->transaction()->status:"N/A",
             'created_at' =>(string)$d->created_at
         ];
     }
