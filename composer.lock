@@ -4,8 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d5d294e70b9d9f803e88134add16f27",
+    "content-hash": "7411f1f944499a3de506495b11433df0",
     "packages": [
+        {
+            "name": "africastalking/africastalking",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AfricasTalkingLtd/africastalking-php.git",
+                "reference": "3cc058b62407170e7ecbe31abbf79bcf3f10baeb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AfricasTalkingLtd/africastalking-php/zipball/3cc058b62407170e7ecbe31abbf79bcf3f10baeb",
+                "reference": "3cc058b62407170e7ecbe31abbf79bcf3f10baeb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MyLibraryNamespace": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ian Juma",
+                    "email": "ijuma@africastalking.com",
+                    "homepage": "https://www.africastalking.com"
+                }
+            ],
+            "description": "One liner description",
+            "homepage": "http://github.com/AfricasTalkingLtd/africastalking-php",
+            "keywords": [
+                "Africastalking",
+                "airtime",
+                "api",
+                "sms",
+                "text message",
+                "ussd",
+                "voice"
+            ],
+            "time": "2016-02-03T13:56:22+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "1.2.0",
@@ -2141,6 +2188,41 @@
                 "uuid"
             ],
             "time": "2018-01-13T22:22:03+00:00"
+        },
+        {
+            "name": "safaricom/mpesa",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/safaricom/mpesa-php-sdk.git",
+                "reference": "b333d9ecf64c314e649179f0ed768faf3e31caea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/safaricom/mpesa-php-sdk/zipball/b333d9ecf64c314e649179f0ed768faf3e31caea",
+                "reference": "b333d9ecf64c314e649179f0ed768faf3e31caea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Safaricom\\Mpesa\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "mit"
+            ],
+            "authors": [
+                {
+                    "email": "nandwa.moses@gmail.com"
+                }
+            ],
+            "description": "A PHP package for Mpesa API",
+            "time": "2017-11-09T13:15:04+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

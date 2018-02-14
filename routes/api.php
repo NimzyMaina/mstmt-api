@@ -25,4 +25,10 @@ $api->group(['prefix' => 'v1'], function ($api) {
 
     $api->get('statements','UploadsController@statements');
 
+    $api->get('stk','MpesaController@stk');
+
+    $api->post('callback','MpesaController@callback');
+
+    $api->get('register','MpesaController@registerUrl');
+
 });

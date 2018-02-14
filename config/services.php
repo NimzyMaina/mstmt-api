@@ -41,4 +41,9 @@ return [
         'redirect'      => env('FB_REDIRECT')
     ],
 
+    'africa_t' => [
+        'username' => env('SMS_KEY'),
+        'app_key' => env('SMS_KEY')
+    ],
+
 ];
