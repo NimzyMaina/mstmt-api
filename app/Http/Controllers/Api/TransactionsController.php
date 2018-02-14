@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Transformers\TransactionsTransformer;
 use Illuminate\Http\Request;
 
 class TransactionsController extends Controller
@@ -17,6 +18,11 @@ class TransactionsController extends Controller
 
         $transactions = $user->descriptions()->with('transaction')->get();
 
-        dd($transactions);
+        if(count($transactions) == 0 )
+        {
+            return $this->respond('No Transactions could be found.',404);
+        }
+
+        return $this->response->collection($transactions,new TransactionsTransformer)->setStatusCode(200);
     }
 }
